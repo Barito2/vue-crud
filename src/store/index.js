@@ -26,7 +26,12 @@ export default createStore({
     },
 
     deleteBook(state,payload){
-      state.books = state.books.filter(book => book.id != payload.id)
+      axios.delete(`https://jsonplaceholder.typicode.com/users/${payload.id}`)
+      .then(() => {
+        console.log("success");
+      }).catch((err) => {
+          console.log(err);
+      })
     },
 
     updateBook(state,payload){
